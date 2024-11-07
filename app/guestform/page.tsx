@@ -137,8 +137,8 @@ export default function Form({ guests }: { guests: GuestField[] }) {
           </div>
 
           <div id="age-error" aria-live="polite" aria-atomic="true">
-            {state.errors?.age &&
-              state.errors.age.map((error: string) => (
+            {state.errors?.amount &&
+              state.errors.amount.map((error: string) => (
                 <p className="mt-2 text-sm text-red-500" key={error}>
                   {error}
                 </p>
@@ -414,7 +414,7 @@ export default function Form({ guests }: { guests: GuestField[] }) {
         >
           Cancel
         </Link>
-        <Button type="submit">Next</Button>
+        <Button type="submit">Submit</Button>
       </div>
     </form>
   );

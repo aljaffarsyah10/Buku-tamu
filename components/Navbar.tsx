@@ -280,15 +280,47 @@ const Navbar = () => {
             >
               Properties
             </Link>
-            {session && (
-              <Link
-                href="/properties/add"
-                className={`${
-                  pathname === "/properties/add" ? "bg-black" : ""
-                } text-white block rounded-md px-3 py-2 text-base font-medium`}
-              >
-                Add Property
-              </Link>
+            <Link
+              href="/properties"
+              className={`text-white ${
+                pathname === "/properties" ? "bg-black" : ""
+              } text-white block rounded-md px-3 py-2 text-base font-medium`}
+            >
+              About
+            </Link>
+            <Link
+              href="/properties"
+              className={`text-white ${
+                pathname === "/properties" ? "bg-black" : ""
+              } text-white block rounded-md px-3 py-2 text-base font-medium`}
+            >
+              Services
+            </Link>
+            <Link
+              href="/properties"
+              className={`text-white ${
+                pathname === "/properties" ? "bg-black" : ""
+              } text-white block rounded-md px-3 py-2 text-base font-medium`}
+            >
+              Feedback
+            </Link>
+            <Link
+              href="/properties"
+              className={`text-white ${
+                pathname === "/properties" ? "bg-black" : ""
+              } text-white block rounded-md px-3 py-2 text-base font-medium`}
+            >
+              Contact
+            </Link>
+        {session && (
+          <Link
+            href="/properties/add"
+            className={`${
+              pathname === "/properties/add" ? "bg-black" : ""
+            } text-white block rounded-md px-3 py-2 text-base font-medium`}
+          >
+            Add Property
+          </Link>
             )}
             {!session &&
               providers &&
