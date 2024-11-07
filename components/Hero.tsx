@@ -1,5 +1,6 @@
 import PropertySearchForm from "./PropertySearchForm";
 import { InfoBox } from "./InfoBox";
+import Link from 'next/link';
 
 function Hero() {
   return (
@@ -13,12 +14,12 @@ function Hero() {
           Serve with professionalism, integrity and trust
           </p>
         </div>
-        <a
-        href={buttonInfo.link}
-        className={`inline-block ${buttonInfo.backgroundColor} text-white rounded-lg px-4 py-2 hover:opacity-80`}
-      >
-        {buttonInfo.text}
-      </a>
+        <Link
+            href="/guestform"
+            className="flex items-center gap-5 rounded-lg bg-blue-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-400 md:text-base"
+          >
+            <span>Fill Guest Form </span>
+          </Link>
         {/* <PropertySearchForm /> */}
       </div>
     </section>

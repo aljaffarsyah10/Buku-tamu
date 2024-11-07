@@ -8,8 +8,8 @@ export default function HomePage() {
     <>
        <Hero />
        {/* <InfoBoxes /> */}
-       <FeaturedProperties />
-       <HomeProperties />
+       {/* <FeaturedProperties />
+       <HomeProperties /> */}
     </>
   );
 }
