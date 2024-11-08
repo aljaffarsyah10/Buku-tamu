@@ -8,8 +8,8 @@ import { GlobalProvider } from "@/context/GlobalContext";
 import "../assets/styles/globals.css";
 
 export const metadata: Metadata = {
-  title: "PropertyPulse | Find The Perfect Rental",
-  description: "Find your dream rental property",
+  title: "Guest Book",
+  description: "Guest Book Form",
 };
 
 export default function RootLayout({
