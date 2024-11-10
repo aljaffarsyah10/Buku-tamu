@@ -2,7 +2,7 @@
 
 // Import the database client and the Post type from Prisma
 import { db } from "@/app/db";
-import type { Post } from "@prisma/client";
+import type { guestdata } from "@prisma/client";
 
 // Import the revalidatePath and redirect functions from Next.js
 import { revalidatePath } from "next/cache";
@@ -12,39 +12,51 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 
 // Define a schema for the post using Zod
-const postSchema = z.object({
+const guestSchema = z.object({
   // the title must be a string between 3 and 255 characters
-  title: z.string().min(3).max(255),
+  name: z.string().min(3).max(255),
   // the content must be a string between 10 and 4000 characters
-  content: z.string().min(10).max(4000),
+  address: z.string().min(3).max(4000),
+  phoneNumber: z.string().min(3).max(4000),
+  gender: z.string(),
+  email: z.string().email(),
+  age: z.number().int().positive(),
 });
 
 // Define an interface for the form state
-interface PostFormState {
+interface GuestFormState {
   errors: {
-    title?: string[];
-    content?: string[];
+    name?: string[];
+    address?: string[];
+    gender?: string[];
+    email?: string[];
+    age?: string[];
     _form?: string[];
   };
 }
 
 // Define an asynchronous function to create a post
-export async function createPost(
-  formState: PostFormState,
+export async function createGuest(
+  formState: GuestFormState,
   formData: FormData
-): Promise<PostFormState> {
+): Promise<GuestFormState> {
   // Validate the form data against the post schema
   // If the form data does not match the schema, the safeParse method returns an object
   // with a success property of false and an error property containing the validation errors.
   // If the form data matches the schema, the safeParse method returns an object
   // with a success property of true and a data property containing the validated data.
-  const result = postSchema.safeParse({
-    title: formData.get("title"),
-    content: formData.get("content"),
+  const result = guestSchema.safeParse({
+    name: formData.get("name"),
+    phoneNumber: formData.get("phoneNumber"),
+    gender: formData.get("gender"),
+    email: formData.get("email"),
+    address: formData.get("address"),
+    age: parseInt(formData.get("age") as string, 10),
   });
 
   // If validation fails, return the errors
   if (!result.success) {
+    console.log("Validation failed", result.error.flatten().fieldErrors);
     return {
       // The flatten method is used to convert the validation errors into a flat object structure
       // that can be easily displayed in the form.
@@ -52,13 +64,17 @@ export async function createPost(
     };
   }
 
-  let post: Post;
+  let guest: guestdata;
   try {
     // If validation passes, create a new post in the database
-    post = await db.post.create({
+    guest = await db.guestdata.create({
       data: {
-        title: result.data.title,
-        content: result.data.content,
+        name: result.data.name,
+        address: result.data.address,
+        phoneNumber: result.data.phoneNumber,
+        gender: result.data.gender,
+        email: result.data.email,
+        age: result.data.age,
       },
     });
   } catch (error: unknown) {
@@ -80,15 +96,16 @@ export async function createPost(
 
   // Revalidate the path and redirect to the home page
   revalidatePath("/");
+  // redirect("/");
   redirect("/");
 }
 
-export async function updatePost(
+export async function updateGuest(
   id: string,
-  formState: PostFormState,
+  formState: GuestFormState,
   formData: FormData
-): Promise<PostFormState> {
-  const result = postSchema.safeParse({
+): Promise<GuestFormState> {
+  const result = guestSchema.safeParse({
     title: formData.get("title"),
     content: formData.get("content"),
   });
@@ -99,13 +116,13 @@ export async function updatePost(
     };
   }
 
-  let post: Post;
+  let guest: guestdata;
   try {
-    post = await db.post.update({
-      where: { id },
+    guest = await db.guestdata.update({
+      where: { id: parseInt(id, 10) },
       data: {
-        title: result.data.title,
-        content: result.data.content,
+        name: result.data.name,
+        address: result.data.address,
       },
     });
   } catch (error: unknown) {
@@ -128,10 +145,10 @@ export async function updatePost(
   redirect("/");
 }
 
-export async function deletePost(id: string): Promise<PostFormState> {
-  let post: Post;
+export async function deleteGuest(id: number): Promise<GuestFormState> {
+  let guest: guestdata;
   try {
-    post = await db.post.delete({
+    guest = await db.guestdata.delete({
       where: { id },
     });
   } catch (error: unknown) {

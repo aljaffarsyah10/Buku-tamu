@@ -1,27 +1,29 @@
-import type { guestdata } from '@prisma/client' // Importing the Post type from the Prisma client library.
-import { db } from '@/app/db'
-import { notFound } from 'next/navigation' // Importing the notFound function from Next.js for handling 404 errors.
+import type { guestdata } from "@prisma/client"; // Importing the Guest type from the Prisma client library.
+import { db } from "@/app/db";
+import { notFound } from "next/navigation"; // Importing the notFound function from Next.js for handling 404 errors.
 
-export async function fetchPosts(): Promise<guestdata[]> {  // Function to fetch all posts from the database.
-    return await db.post.findMany({
-        orderBy: [
-            {
-                updatedAt: 'desc',
-            }
-        ],
-    })
+export async function fetchGuests(): Promise<guestdata[]> {
+  // Function to fetch all guests from the database.
+  return await db.guestdata.findMany({
+    orderBy: [
+      {
+        name: "desc",
+      },
+    ],
+  });
 }
 
-export async function fetchPostById(id: string): Promise<guestdata | null> { // Function to fetch a single post by its ID.
-    const post = await db.post.findFirst({
-        where: {
-            id
-        }
-    })
+export async function fetchGuestById(id: number): Promise<guestdata | null> {
+  // Function to fetch a single guest by its ID.
+  const guest = await db.guestdata.findFirst({
+    where: {
+      id,
+    },
+  });
 
-    if (!post) {
-        notFound() // If the post is not found, a 404 error is thrown.
-    }
+  if (!guest) {
+    notFound(); // If the guest is not found, a 404 error is thrown.
+  }
 
-    return post
+  return guest;
 }

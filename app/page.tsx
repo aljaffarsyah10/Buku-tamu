@@ -7,11 +7,11 @@ import FeaturedProperties from "@/components/FeaturedProperties";
 export default function HomePage() {
   return (
     <>
-       <Hero />
-       <GuestData />
-       {/* <InfoBoxes /> */}
-       {/* <FeaturedProperties />
-       <HomeProperties /> */}
+      <Hero />
+      <GuestData />
+      {/* <InfoBoxes /> */}
+      {/* <FeaturedProperties />
+      <HomeProperties /> */}
     </>
   );
 }
@@ -44,8 +44,6 @@ export default function HomePage() {
 //     </div>
 //   );
 // }
-
-
 
 // import { fetchPosts } from "@/app/db/queries/posts";
 // import Link from "next/link";
