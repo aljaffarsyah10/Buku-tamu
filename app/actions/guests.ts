@@ -21,6 +21,10 @@ const guestSchema = z.object({
   gender: z.string(),
   email: z.string().email(),
   age: z.number().int().positive(),
+  nameInstitute: z.string(),
+  nipnim: z.string(),
+  employment: z.string(),
+  education: z.string(),
 });
 
 // Define an interface for the form state
@@ -31,6 +35,10 @@ interface GuestFormState {
     gender?: string[];
     email?: string[];
     age?: string[];
+    nameInstitute?: string[];
+    nipnim?: string[];
+    employment?: string[];
+    education?: string[];
     _form?: string[];
   };
 }
@@ -52,6 +60,10 @@ export async function createGuest(
     email: formData.get("email"),
     address: formData.get("address"),
     age: parseInt(formData.get("age") as string, 10),
+    nameInstitute: formData.get("nameInstitute"),
+    nipnim: formData.get("nipnim"),
+    employment: formData.get("employment"),
+    education: formData.get("education"),
   });
 
   // If validation fails, return the errors
@@ -75,6 +87,10 @@ export async function createGuest(
         gender: result.data.gender,
         email: result.data.email,
         age: result.data.age,
+        nipnim: result.data.nipnim,
+        nameInstitute: result.data.nameInstitute,
+        employment: result.data.employment,
+        education: result.data.education,
       },
     });
   } catch (error: unknown) {

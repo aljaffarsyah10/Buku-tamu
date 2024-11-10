@@ -14,6 +14,10 @@ export default function GuestsCreate() {
             gender: "",
             email: "",
             address: "",
+            nameInstitute: "",
+            nipnim: "",
+            employment: "",
+            education: "",
             age: 0,
           }}
         />

@@ -23,7 +23,7 @@ async function GuestData() {
         </Link>{" "}
         // Link to create a new guest.
       </div>
-      <div className="mb-32 grid gap-x-8 gap-y-4 text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
+      <div className="">
         {guests.map((guest) => {
           // Mapping over the guests and rendering each one.
           return (
@@ -55,6 +55,101 @@ async function GuestData() {
           );
         })}
       </div>
+
+      <table className="hidden min-w-full text-gray-900 md:table">
+        <thead className="rounded-lg text-left text-sm font-normal">
+          <tr>
+            <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
+              Customer
+            </th>
+            <th scope="col" className="px-3 py-5 font-medium">
+              Phone Number
+            </th>
+            <th scope="col" className="px-3 py-5 font-medium">
+              Gender
+            </th>
+            <th scope="col" className="px-3 py-5 font-medium">
+              Email
+            </th>
+            <th scope="col" className="px-3 py-5 font-medium">
+              Address
+            </th>
+            <th scope="col" className="px-3 py-5 font-medium">
+              Age
+            </th>
+            <th scope="col" className="px-3 py-5 font-medium">
+              Name Institute
+            </th>
+            <th scope="col" className="px-3 py-5 font-medium">
+              NIP/NIM
+            </th>
+            <th scope="col" className="px-3 py-5 font-medium">
+              Employment
+            </th>
+            <th scope="col" className="px-3 py-5 font-medium">
+              Education
+            </th>
+            <th scope="col" className="px-3 py-5 font-medium">
+              Status
+            </th>
+            <th scope="col" className="relative py-3 pl-6 pr-3">
+              <span className="sr-only">Edit</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody className="bg-white">
+          {guests?.map((guest) => (
+            <tr
+              key={guest.id}
+              className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
+            >
+              <td className="whitespace-nowrap py-3 pl-6 pr-3">
+                <div className="flex items-center gap-3">
+                  {/* <Image
+                    src={guest.image_url}
+                    className="rounded-full"
+                    width={28}
+                    height={28}
+                    alt={`${guest.name}'s profile picture`}
+                  /> */}
+                  <p>{guest.name}</p>
+                </div>
+              </td>
+              <td className="whitespace-nowrap px-3 py-3">
+                {guest.phoneNumber}
+              </td>
+              <td className="whitespace-nowrap px-3 py-3">{guest.gender}</td>
+              <td className="whitespace-nowrap px-3 py-3">{guest.email}</td>
+              <td className="whitespace-nowrap px-3 py-3">{guest.address}</td>
+              <td className="whitespace-nowrap px-3 py-3">{guest.age}</td>
+              <td className="whitespace-nowrap px-3 py-3">
+                {guest.nameInstitute}
+              </td>
+              <td className="whitespace-nowrap px-3 py-3">{guest.nipnim}</td>
+              <td className="whitespace-nowrap px-3 py-3">
+                {guest.employment}
+              </td>
+              <td className="whitespace-nowrap px-3 py-3">{guest.education}</td>
+              {/* <td className="whitespace-nowrap px-3 py-3">
+                {formatCurrency(guest.amount)}
+              </td>
+              <td className="whitespace-nowrap px-3 py-3">
+                {formatDateToLocal(guest.date)}
+              </td>
+              <td className="whitespace-nowrap px-3 py-3">
+                <GuestStatus status={guest.status} />
+              </td> */}
+
+              {/* <td className="whitespace-nowrap py-3 pl-6 pr-3">
+                <div className="flex justify-end gap-3">
+                  <UpdateGuest id={guest.id} />
+                  <DeleteGuest id={guest.id} />
+                </div>
+              </td> */}
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
       <div className="mb-4">
         <Link href="/posts/create" className="bg-white px-4 py-2 rounded">

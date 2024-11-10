@@ -12,6 +12,10 @@ interface FormErrors {
   gender?: string[];
   email?: string[];
   address?: string[];
+  nameInstitute?: string[];
+  nipnim?: string[];
+  employment?: string[];
+  education?: string[];
   age?: number;
 }
 
@@ -30,6 +34,10 @@ interface GuestFormProps {
     gender: string;
     email: string;
     address: string;
+    nameInstitute: string;
+    nipnim: string;
+    employment: string;
+    education: string;
     age: number;
   };
 }
@@ -168,6 +176,81 @@ export default function GuestForm({ formAction, initialData }: GuestFormProps) {
               </div>
             </div>
           </div>
+
+          <label htmlFor="guest" className="mb-2 block text-m font-medium">
+            Person Background
+          </label>
+          {/* Institute Name */}
+          <div className="mb-4">
+            <label htmlFor="guest" className="mb-2 block text-sm font-medium">
+              Input Name Institute
+            </label>
+            <div className="relative">
+              <input
+                id="nameInstitute"
+                name="nameInstitute"
+                type="text"
+                placeholder="Input name Institute"
+                className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                aria-describedby="nameInstitute-error"
+              />
+              <icon.UserGroupIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
+            </div>
+          </div>
+          {/* Guest NIP/NIM*/}
+          <div className="mb-4">
+            <label htmlFor="guest" className="mb-2 block text-sm font-medium">
+              Input NIP/NIM
+            </label>
+            <div className="relative">
+              <input
+                id="nipnim"
+                name="nipnim"
+                type="text"
+                placeholder="Please Input your NIP/NIM"
+                className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                aria-describedby="nipnim-error"
+              />
+              <icon.UserCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
+            </div>
+          </div>
+
+          {/* Guest Employment */}
+          <div className="mb-4">
+            <label htmlFor="guest" className="mb-2 block text-sm font-medium">
+              Input Employment
+            </label>
+            <div className="relative">
+              <input
+                id="employment"
+                name="employment"
+                type="text"
+                placeholder="Input Employment"
+                className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                aria-describedby="employment-error"
+              />
+              <icon.WrenchIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
+            </div>
+          </div>
+
+          {/* Guest Education */}
+          <div className="mb-4">
+            <label htmlFor="guest" className="mb-2 block text-sm font-medium">
+              Input Education
+            </label>
+            <div className="relative">
+              <input
+                id="education"
+                name="education"
+                type="text"
+                placeholder="Input Education"
+                className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                aria-describedby="education-error"
+              />
+              <icon.HomeModernIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
+            </div>
+          </div>
+
           <div className="mt-6 flex justify-end gap-4">
             <Link
               href="/"
