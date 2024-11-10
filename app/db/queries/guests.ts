@@ -7,7 +7,7 @@ export async function fetchGuests(): Promise<guestdata[]> {
   return await db.guestdata.findMany({
     orderBy: [
       {
-        name: "desc",
+        id: "asc",
       },
     ],
   });
