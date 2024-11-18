@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { ToastContainer } from "react-toastify";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 // import AuthProvider from "@/components/AuthProvider";
 import { GlobalProvider } from "@/context/GlobalContext";
+import AdminNavbar from "@/components/AdminNavbar";
+import AdminSideNav from "@/components/AdminSidenav";
 
-import "../assets/styles/globals.css";
+import "@/assets/styles/globals.css";
 
 export const metadata: Metadata = {
   title: "Guest Book",
@@ -22,8 +23,9 @@ export default function RootLayout({
       {/* <AuthProvider> */}
         <html lang="en">
           <body>
-            <Navbar />
-            <main>{children}</main>
+            <AdminNavbar />
+            {/* <AdminSideNav /> */}
+            <div>{children}</div>
             {/* <Footer /> */}
             <ToastContainer />
           </body>

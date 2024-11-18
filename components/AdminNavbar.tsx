@@ -19,7 +19,7 @@ import profileDefault from "@/assets/images/profile.png";
 
 type Providers = Record<string, ClientSafeProvider> | null;
 
-const Navbar = () => {
+const AdminNavbar = () => {
   // const { data: session } = useSession();
   // const profileImage = session?.user?.image;
 
@@ -81,7 +81,7 @@ const Navbar = () => {
               />
 
               <span className="hidden md:block text-white text-2xl font-bold ml-2">
-                GuestBook
+                GuestBook Admin
               </span>
             </Link>
             {/* <!-- Desktop Menu Hidden below md screens --> */}
@@ -338,10 +338,11 @@ const Navbar = () => {
                 Add Property
               </Link>
             {/* )} */}
+
           </div>
         </div>
       )}
     </nav>
   );
 };
-export default Navbar;
+export default AdminNavbar;

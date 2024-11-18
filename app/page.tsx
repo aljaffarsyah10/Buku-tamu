@@ -1,14 +1,15 @@
 import Hero from "@/components/Hero";
-import GuestData from "@/components/GuestData";
+import PostData from "@/components/PostData";
 import InfoBoxes from "@/components/InfoBoxes";
-import HomeProperties from "@/components/HomeProperties";
-import FeaturedProperties from "@/components/FeaturedProperties";
+// import HomeProperties from "@/components/HomeProperties";
+// import FeaturedProperties from "@/components/FeaturedProperties";
+import RootLayout from "@/app/layout";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <GuestData />
+      <PostData />
       {/* <InfoBoxes /> */}
       {/* <FeaturedProperties />
       <HomeProperties /> */}
